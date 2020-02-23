@@ -1,0 +1,207 @@
+public class ArrayRunner{
+
+	public static void main(String[] args) {
+		//fill an array with random integers from 1 through 100
+		int x = 10;
+		int[] arr = new int[x];
+		
+		//use a regular for-loop to alter/fill 
+		//the array
+		for (int i = 0; i<x; i++){
+			int random = (int)(Math.random()*100+1);
+			arr[i]= random;
+		} 
+		
+		
+		//call a static method to find the max
+		ArrayUtil.findMax(arr);
+		//value of the array and print it out
+		System.out.println("The max is: " + ArrayUtil.findMax(arr));
+		
+		
+		//call a static method to find the max
+	
+		//value of the array and print it out
+		System.out.println("The min is: " + ArrayUtil.findMin(arr));
+		
+		
+		
+		System.out.println("The sum is: " + ArrayUtil.arrSum(arr));
+	
+		System.out.println("The avg is: " + ArrayUtil.arrAverage(arr));
+		
+		
+		System.out.println("The hasValue is: " + ArrayUtil.hasValue(arr,11));
+		
+		ArrayUtil.hasDuplicate(arr);
+		System.out.println("The Duplicate is: " + ArrayUtil.hasDuplicate(arr));
+		
+		
+		
+		//use a for-each loop to access and print the array
+		//you may NOT use a for-each loop to alter the array
+		
+		
+		System.out.println("\n **contents of the array**");
+		for(int value:arr)
+			System.out.println(value);
+		
+		
+		
+		
+		
+		System.out.println("\\n **L contents of the array**");
+		for(int value:ArrayUtil.circulate(arr,'r',2))
+			System.out.println(value);
+		
+		
+
+	}
+
+}
+
+//static methods to work on an array of integers
+
+public final class ArrayUtil {
+	
+	//return max value of array
+	public static int findMax (int []arr){
+		int max = arr[0];
+		for (int i = 0; i<arr.length;i++){
+			if (arr[i]>max)
+				max=arr[i];
+		}
+		return max;
+	}
+	
+	//return minimum value of array
+	public static int findMin (int []arr){
+		int min = arr[0];
+		for (int i = 0; i<arr.length;i++){
+			if (arr[i]<min)
+				min=arr[i];
+		}
+		return min;
+	}
+	
+	//return the sum of the array
+	public static int arrSum (int []arr){
+		int sum = 0;
+		for(int i = 0 ; i<arr.length; i++) {
+			sum = sum + arr[i];
+		}
+		return sum;
+	}
+	
+	//return the average of the elements
+	//of the array
+	public static double arrAverage(int[] arr){
+		double avg =0;
+		for(int i = 0 ; i<arr.length; i++) {
+			avg = avg + arr[i];
+		}
+		avg = avg/arr.length;
+		return avg;
+	}
+	
+	//look for a specific value in an array.
+	//return true if the value exists in the array,
+	//return false if it does not.
+	public static boolean hasValue(int[]arr, int value){
+		boolean isInArray = false;
+		for (int i = 0; i<arr.length;i++){
+			if (arr[i]==value) {
+				isInArray = true;
+			}
+				
+		}
+		return isInArray;
+	}
+	
+	//determines if duplicate values exist
+	//in the array
+	public static boolean hasDuplicate(int[] arr){
+		boolean duplicateInArray = false;
+		for (int i = 0; i<arr.length;i++){
+			for (int j = i+1; j<arr.length;j++){
+				if(arr[i]==arr[j]) {
+					duplicateInArray = true;
+				}	
+			}
+		}
+		return duplicateInArray;
+	}
+	
+	//return an array with reverse order 
+	public static int[] reverse (int []arr){
+		int [] temp = new int[arr.length];
+		for (int i = 0; i<arr.length;i++){
+			temp[i]=arr[arr.length-i-1];
+						
+		}
+		return temp;
+	}
+	
+	//return an array with elements shifted
+	//left or right for a certain number of spaces
+	//precondition: the number of spaces will be less
+	//than or equal to the number of elements in the array.
+	//direction = 'l' for left and 'r' for right
+	public static int[] shift(int[]arr, char direction,int spaces){
+		int []temp = new int [arr.length];
+		if(direction == 'r') {
+			for (int i = 0; i<arr.length;i++){
+				if(i<spaces) {
+					temp[i]=0;
+				}
+				else {
+					temp[i]=arr[i-spaces];
+				}
+			}
+			
+		}
+		if(direction == 'l') {
+			for (int i = 0; i<arr.length;i++){
+				if(i>=arr.length-spaces) {
+					temp[i]=0;
+					
+				}
+				else {
+					temp[i]=arr[spaces+i];
+				}
+			}
+		}
+		return temp;
+	}
+	
+	public static int[] circulate(int[]arr, char direction,int num){
+		int []temp = new int [arr.length];
+		
+		if(direction == 'r') {
+			for (int i = 0; i<arr.length;i++){
+				if(i<num) {
+					temp[i]=arr[arr.length-num+i];
+				}
+				else {
+					temp[i]=arr[i-num];
+				}
+			}
+		}
+		if(direction == 'l') {
+			int s = arr.length-num;
+			for (int i = 0; i<arr.length;i++){
+				if(i>=arr.length-num) {
+					temp[i]=arr[i-s];
+				}
+				else {
+					temp[i]=arr[num+i];
+				}
+			}
+		}
+		return temp;
+	}
+	
+	
+	
+	
+}
