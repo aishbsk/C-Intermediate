@@ -1,0 +1,37 @@
+//Aishwarya Balaji
+//Ms. Kubik
+//10/3/2019
+import java.io.File;
+import java.util.Scanner;
+  public class avg4
+  {
+    public static void main(String[] args) throws Exception
+    {
+      // pass the path to the file as a parameter
+      //File file = new File("C:\\Users\\lkubik\\Documents\\java\\test.txt");
+    File file = new File("test3.txt");
+    Scanner sc = new Scanner(file);
+    
+  while(sc.hasNextLine())
+  {
+    double sum = 0.0;
+    int counter = 0;
+   String answer = sc.next();
+   Scanner sc1 = new Scanner(answer);
+   sc1.useDelimiter(",|\\r\n");
+   while(sc1.hasNextLine()){
+     String a1 = sc1.next();
+     System.out.println(a1);
+     int ans = Integer.parseInt(a1);
+ 	 counter++;
+ 	 sum+=ans;
+ 
+   }
+   System.out.println("Average is: " + (sum/counter));
+ 
+  }
+  
+   }
+    
+}
+ 
