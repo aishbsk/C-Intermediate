@@ -1,0 +1,82 @@
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+public class ACSL3Intermediate {
+	
+	public static void main(String[] args) throws FileNotFoundException {
+		//String input = "386257914 5";
+		
+		File file = new File("/Users/AishwaryaB/Desktop/ACSl1testIn.txt");
+	    Scanner sc = new Scanner(file);
+	  
+	  
+	    while(sc.hasNextLine())
+	    {
+	    	String input = sc.next();
+	    	
+	    	//int space = Integer.parseInt(sc.next());
+	    	//System.out.println(space);
+	    	//System.out.println(input);
+	    	
+	    	//int space = input.indexOf(" ");
+			int [] list = new int[input.length()];
+			
+			//THE ENTIRE LIST OF NUMBERS WITHOUT THE SPACE AND N
+			for(int i = 0; i<input.length(); i++) {
+				list[i]=Character.getNumericValue(input.charAt(i));
+				
+			}
+			
+			
+			
+			
+			//FIND N
+			int N = Integer.parseInt(sc.next());
+			//int N = list[list.length-Npos];
+			
+			
+			//FIND position of N
+			int Npos = list.length-N;
+			int p = list[Npos];
+			//int Npos = input.charAt(N);
+			//String number = input.substring(space+1);
+			//int Npos = Integer.parseInt(number);
+			//System.out.println(p);
+			
+			//Add N to everything before left
+			for(int i = 0; i<Npos; i++) {
+				//Conditions first if greater than 9 then change
+				if(p+list[i]<10) {
+					list[i]=p+list[i];
+				}
+				else {
+					list[i]=(p+list[i])%10;
+				}
+			}
+
+			//other condition
+			for(int i = Npos+1; i<list.length; i++) {
+				//Conditions first if greater than 9 then change
+				
+				list[i] = Math.abs(list[i]-p);
+			}
+			
+			
+			
+			for(int a : list) {
+				System.out.print(a);
+			}
+	    	
+			System.out.println();
+		
+		
+	    }
+		
+		
+	}
+
+}
+
+
+
+
