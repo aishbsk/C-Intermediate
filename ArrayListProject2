@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class ArrayListProject2 {
+	 	public static void main(String[] args) {
+	 		Scanner keyboard = new Scanner(System.in);
+	 		
+	 		String i1 = keyboard.nextLine();
+	 		int int1 = Integer.parseInt ( i1 );
+	 		String i2 = keyboard.nextLine();
+	 		int int2 = Integer.parseInt ( i2 );
+	 		
+	 		double ans = (double)int1/int2;
+	 		String answer = Double.toString(ans);
+	 		ArrayList<Character> deci = new ArrayList<Character>();
+	 		
+	 		
+	 		deci.add(answer.charAt(2));
+			for(int i = 3; i<answer.length(); i++) {
+				int rep = 0;
+				for(int j = 0; j<deci.size(); j++) {
+					if(deci.get(j)==answer.charAt(i)) {
+						rep++;
+					}	
+				}
+				if(rep==0) {
+					deci.add(answer.charAt(i));
+				}
+			}
+	 		
+	 		System.out.print(deci);
+	 	}
+}
+
