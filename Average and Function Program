@@ -1,0 +1,91 @@
+//Aishwarya Balaji
+//Ms. Kubik
+//9/13/2019
+//2B
+public class FunctionTable {
+	
+	
+	public static void main(String[] args) {
+
+
+		  System.out.printf("%13s","Number");
+		  System.out.printf("%13s","Square");
+		  System.out.printf("%17s","Square Root");
+		  System.out.printf("%13s","Cube");
+		  System.out.printf("%13s","4th Root");
+		  System.out.printf("\n");
+				for(double i = 1; i<=20; i++) {
+				    int num = (int)i;
+				System.out.printf("%13d",num);
+		        
+				System.out.printf("%13d",(int)Math.pow(i,2));
+				
+		     double thirdRoot = Math.pow(i,(1.0/2.0));
+		     int cubic = (int)(Math.pow(i,3));
+		     double fourthRoot = Math.pow(i,(1.0/4.0));
+				 System.out.printf("%17.4f",thirdRoot);
+				
+		     
+		     System.out.printf("%13d",cubic);
+		   
+		     System.out.printf("%13.4f",fourthRoot);
+					
+				System.out.printf("%n");
+				}
+				
+			}
+	
+	
+}
+
+import java.util.Scanner;
+public class Avg1 {
+	 public static void main(String[] args) {
+		   Scanner keyboard = new Scanner(System.in);
+		   char ans = 'Y';
+		   int sum = 0;
+		   int count = 0;
+		   do{
+		     if(count == 0){
+		       System.out.print("Enter an Integer: ");
+		       int data = keyboard.nextInt();
+		       sum = data + sum;
+		       count++;
+		     }
+		     else if(count>=1){
+		       System.out.print("Y or N: ");
+		       ans = keyboard.next().charAt(0);
+		       if(ans == 'Y'){
+		         System.out.print("Enter an Integer: ");
+		         int data = keyboard.nextInt();
+		         sum = data + sum;
+		         count++;
+		       }
+		     }
+		   }while(ans == 'Y');
+		   double average = (double)sum/count;
+		   System.out.println("Average is: "+average);
+		 }
+}
+
+import javax.swing.JOptionPane;
+public class avg2 {
+	public static void main(String[] args) {
+		 
+		  int sum = 0;
+		 
+
+		  for(int a = 0; a<5; a++){
+		       String input;
+		        input = JOptionPane.showInputDialog("Enter Int");
+		        int data = Integer.parseInt(input);
+		        sum = data + sum;
+		  }
+		  double average = (double)sum/5;
+		  JOptionPane.showMessageDialog(null, "Average is: "+average);
+		}
+
+
+}
+
+
