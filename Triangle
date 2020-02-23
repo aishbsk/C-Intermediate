@@ -1,0 +1,83 @@
+//Aishwarya Balaji
+//Ms. Kubik 2B
+//9/23/2019
+//Triangle Program
+public class Triangle {
+	private Coordinate a;
+	private Coordinate b;
+	private Coordinate c;
+	private double sideA;
+	private double sideB;
+	private double sideC;
+public Triangle() {
+	a = new Coordinate(0,0);
+	b = new Coordinate(0,0);
+	c = new Coordinate(0,0);
+	sideA = dist(a,b);
+	sideB = dist(b,c);
+	sideC = dist(c,a);
+}
+public Triangle(int ax, int ay, int bx, int by, int cx, int cy) {
+	a = new Coordinate(ax,ay);
+	b = new Coordinate(bx,by);
+	c = new Coordinate(cx,cy);
+}
+public void dialate(int sFactor) {
+	a.dialate(sFactor);
+	b.dialate(sFactor);
+	c.dialate(sFactor);
+}
+
+public double perimeter() {
+	double peri = dist(a,b)+dist(b,c)+dist(c,a);
+	return(peri);
+}
+
+public String toString() {
+	String first = a.toString();
+	String second = b.toString();
+	String third = c.toString();
+	return("a"+first+"b"+second+"c"+third);
+
+	
+}
+public double dist(Coordinate one, Coordinate two) {
+	//double distance=0;
+	double xpart;
+	double ypart;
+	xpart = Math.pow((one.getx()-two.getx()), 2);
+	ypart = Math.pow((one.gety()-two.gety()), 2);
+	double inSqrt = xpart+ypart;
+	double distance = Math.sqrt(inSqrt);
+	
+	return(distance);
+}
+
+public double area() {
+	double s = (dist(a,b)+dist(b,c)+dist(c,a))/2;
+	double mult = (s-dist(a,b))*(s-dist(b,c))*(s-dist(c,a));
+	double a = Math.sqrt(s*mult);
+return(a);
+}
+
+public void reflectX() {
+	a.reflecX();
+	b.reflecX();
+	c.reflecX();
+}
+
+public void reflectY() {
+	a.reflecY();
+	b.reflecY();
+	c.reflecY();
+}
+
+public void totalDialate(int scale) {
+	a.dialate(scale);
+	b.dialate(scale);
+	c.dialate(scale);
+	
+}
+
+
+}
