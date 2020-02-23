@@ -1,0 +1,105 @@
+public class ComplexNum {
+	private double real; // real part
+	private double imag; //imaginary part
+	
+	//default constructor.
+	//set real = imag = 0;
+	ComplexNum()
+	{
+		this(0,0);
+	}
+	
+	//specific constructor
+	//use this. keyword to set private variables
+	ComplexNum(double real, double imag)
+	{
+		this.real = real;
+		this.imag = imag;
+	}
+	
+	public double getR() {
+		return real;
+	}
+	
+	public double getI() {
+		return imag;
+	}
+	
+	public void setI(double i) {
+		this.imag = i;
+	}
+	
+	public void setR(double r) {
+		this.real = r;
+	}
+	
+	//add a complex number to this
+	//complex number. return a ComplexNum
+	public ComplexNum plus(ComplexNum a)
+	{	
+		ComplexNum b = new ComplexNum ();
+		b.setI(a.getI()+ this.imag);
+		b.setR(a.getR()+ this.real);
+		return(b);
+	}
+	
+	//subtract
+	public ComplexNum minus(ComplexNum a)
+	{
+		ComplexNum b = new ComplexNum ();
+		b.setI(this.imag - a.getI());
+		b.setR(this.real - a.getR());
+		return(b);
+	}
+	
+	public ComplexNum times(ComplexNum a)
+	{
+		ComplexNum b = new ComplexNum ();
+		double Sq = ((-1)*this.getI()*a.getI())+(this.getR()*a.getR());
+		b.setI(this.getI()*a.getR()+this.getR()*a.getI());
+		b.setR(Sq);
+		return(b);
+	}
+	
+	// return the complex conjugate
+	public ComplexNum conjugate(ComplexNum a)
+	{
+		ComplexNum b = new ComplexNum ();
+		b.setI(-a.imag);
+		b.setR(a.real);
+		return(b);
+	}
+	
+	// return the rationalized version of this 
+	// complex number.
+	// 1/(a+bi) where a+bi is the current object
+	public ComplexNum rationalize()
+	{
+		double Sq = (this.getI()*this.getI())+(this.getR()*this.getR());
+		this.setR(this.getR()/Sq);
+		this.setI(-this.getI()/Sq);
+		return(this);
+	}
+	
+	public String polarize()
+	{
+		String out = "";
+		// return the polar form of this complex 
+		// number. find the magnitude and angle 
+		double Sq = (this.getI()*this.getI())+(this.getR()*this.getR());
+		double r = Math.sqrt(Sq);
+		double theta = Math.atan(this.imag/this.real);
+		out = Double.toString(r)+"(cos ("+ Double.toString(theta)+") + i sin("+ Double.toString(theta) + "))";
+		// in radians.
+		// return a string in the form 
+		// r(cos(theta) + i sin(theta))
+		return out;
+	}
+	public String toString(){
+		String out = " ";
+		// write code here to return a string
+		// in the form a + bi
+		out = Double.toString(this.getR())+" + "+Double.toString(this.getI())+"i";
+		return (out);
+	}
+}
