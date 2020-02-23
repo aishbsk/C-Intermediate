@@ -1,0 +1,97 @@
+import java.util.Scanner;
+import java.util.*;
+
+public class ArrayList1 {
+	 	public static void main(String[] args) {
+	 		Scanner keyboard = new Scanner(System.in);
+	 		System.out.print("Enter a string: ");
+	 		String sentence = keyboard.nextLine();
+	 		String clean = sentence.replaceAll(" ", "").toLowerCase();
+	 		ArrayList<Character> slist = new ArrayList<Character>();
+	 		ArrayList<Integer> ilist = new ArrayList<Integer>();
+			slist.add(clean.charAt(0));
+			for(int i = 1; i<clean.length(); i++) {
+				int rep = 0;
+				for(int j = 0; j<slist.size(); j++) {
+					if(slist.get(j)==clean.charAt(i)) {
+						rep++;
+					}	
+				}
+				if(rep==0) {
+					slist.add(clean.charAt(i));
+				}
+			}
+			for(Character a: slist) {
+			int count=0;
+				for(int c = 0; c<clean.length(); c++) {
+					if(clean.charAt(c)==a) {
+						count++;
+					}
+				}
+				ilist.add(count);
+			}
+			System.out.println(slist);
+			System.out.println(ilist);
+	 	}
+}
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ArrayListPart2 {
+	public static void main(String[] args) {
+		Scanner keyboard = new Scanner(System.in);
+ 		System.out.print("Enter a string: ");
+ 		String sentence = keyboard.nextLine();
+ 		String clean = sentence.replaceAll(" ", "").toLowerCase();
+ 		
+ 		LetterCounter a = new LetterCounter('a');
+ 		for(int i = 0; i<clean.length(); i++) {
+ 			a.compareTo(clean.charAt(i));
+ 		}
+ 		
+ 		System.out.print("Counter is "+ a.getCounter());
+	}
+	
+}
+
+public class LetterCounter {
+	private char letter;
+	private int count;
+	
+	LetterCounter(){
+		letter = ' ';
+		count = 0;
+	}
+	LetterCounter(char w){
+		letter = w;
+	}
+	
+	public void setLetter(char w) {
+		this.letter = w;
+	}
+	public void setCounter(int c) {
+		this.count = c;
+	}
+	public char getLetter() {
+		return letter;
+	}
+	public int getCounter() {
+		return count;
+	}
+	public void compareTo(char w) {
+		equals(w);
+	}
+	public void equals(char w) {
+		if(w==letter) {
+			count++;
+		}
+	}
+	public void toString(char w) {
+		System.out.print("letter is "+ letter +" count is "+ count );
+	}
+	
+	
+}
+
