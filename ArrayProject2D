@@ -1,0 +1,78 @@
+public class ArrayProject2D {
+	public static boolean isItMagic(int [][] arr) {
+		int msum = 0;
+		int l = arr.length;
+		
+		
+		for(int i = 0; i<l; i++) {
+			msum = msum + arr[0][i];
+			
+		}
+		
+		
+		for(int j = 0; j<l; j++) {
+			int rsum = 0;
+			for(int k = 0; k<l; k++) {
+				rsum = rsum + arr[j][k];
+			
+			}
+			
+			if(msum!=rsum) {
+			return false;
+			}
+		}
+		
+		
+		
+		for(int j = 0; j<l; j++) {
+			int csum = 0;
+			for(int k = 0; k<l; k++) {
+				csum = csum + arr[k][j];
+			}
+			
+			
+			if(msum!=csum) {
+			return false;
+			}
+		}
+		
+		
+		
+		int majdiag = 0;
+		for(int j = 0; j<l; j++) {
+			majdiag = majdiag + arr[j][j];
+		}
+		
+		if(msum!=majdiag) {
+			return false;
+		}
+		
+		
+		
+		int mindiag = 0;
+		for(int j = l-1; j>=0; j--) {
+			int v = arr.length-j-1;
+			mindiag = mindiag + arr[j][arr.length-j-1];
+		}
+		
+		if(msum!=mindiag) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	
+	public static void main (String[] args)  {
+		int [] [] sq = {{16,11,18}, {17,15,13}, {12,19,14}};
+		//int [] [] sq = {{1,2,3}, {4,5,6}, {7,8,9}};
+		
+		if(isItMagic(sq)) {
+			System.out.println("MAGIC SQUARE");
+		}
+		else {
+			System.out.println("NOT MAGIC SQUARE");
+		}
+	}
+	
+}
