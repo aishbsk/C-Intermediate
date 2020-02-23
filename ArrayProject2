@@ -1,0 +1,68 @@
+public class ArrayProject2 {
+	public static int[][] Compute(int [][] arr) {
+		
+		int row = arr.length;
+		int col = arr[0].length;
+		
+//		System.out.println(row+" "+col);
+		
+		for(int j = 0; j<row; j++) {
+			
+			for(int k = 0; k<col; k++) {
+				int sum = 0;
+				int count = 1;
+				int a=0, b=0, c=0, d=0, e=0;
+				
+				a = arr[j][k];
+				
+				if(j!=0) {
+					b = arr[j-1][k];
+					count++;
+				}
+				if(j!=row-1) {
+					c = arr[j+1][k];
+					count++;
+				}
+				if(k!=0) {
+					d = arr[j][k-1];
+					count++;
+				}
+				if(k!=col-1) {
+					e = arr[j][k+1];
+					count++;
+				}
+				
+				sum = (int)(a + b + c + d + e)/count;
+				arr[j][k] = sum;
+			
+			}
+			
+			
+		}
+		
+	
+		return arr;
+		
+		
+	}
+	
+	
+	public static void main (String[] args)  {
+		int [] [] sq = {{7,8,10,-3}, {5,12,8,9}, {6,2,-5,4}};
+		
+		
+		Compute(sq);
+		
+		for(int a[] : sq) {
+			for(int n : a) {
+				System.out.print(n +" ");
+			}
+			System.out.println();
+		}
+		
+	
+		
+		
+	}
+	
+}
