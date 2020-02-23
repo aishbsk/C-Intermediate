@@ -1,0 +1,114 @@
+public class BunnyFoo {
+	  
+	  private int x;
+	  private String bName;
+	  public BunnyFoo(){
+	    x=0;
+	    bName = "";
+	    }
+	  public BunnyFoo (int y, String n)
+	  {
+	    x = y;
+	    bName = n;
+	  }
+	  public String getbName() {
+	    return bName;
+	  }
+	  public void setbName(String n) {
+		bName = n;
+	  }
+	 
+	  public String toString()
+	    {
+		  return "Field Mice "+"Name " + x;
+		}
+	  
+	  public int getX() {
+	   return this.x;
+	 }
+	  
+	  public boolean equals (BunnyFoo m)
+	  {
+	    if (this.x == m.getX()&&this.bName.equals(m.getbName())==true)
+	      return true;
+	    else
+	      return false;
+	  }
+	 
+	}
+	 
+   
+   public class FieldMice {
+	  private int x;
+	  private String mName;
+	  public FieldMice(){
+	    x=0;
+	    mName = "";
+	    }
+	  public FieldMice (int y, String n) {
+	    x=y;
+	    mName = n;
+	    }
+	  public String getmName() {
+	    return mName;
+	  }
+	  public void semtName(String n) {
+		  mName = n;
+	  }
+	   public int getX() {
+	   return this.x;
+	 }
+	  public String toString()
+	  {
+		  return "Field Mice "+"Name " + x;
+	  }
+	  public boolean equals (FieldMice m)
+	  {
+	    if (this.x == m.getX() && this.mName.equals(m.getmName())==true)
+	      return true;
+	    else
+	      return false;
+	  }
+	}
+
+
+
+class taleOfTwoClasses {
+ public static void main(String[] args) {
+    FieldMice fm1 = new FieldMice(3, "Remy");
+    FieldMice fm2 = new FieldMice(10, "Tom");
+    FieldMice fm3 = fm2;
+    
+    BunnyFoo bf1 = new BunnyFoo(5,"Bugs");
+    BunnyFoo bf2 = new BunnyFoo(7,"Lola");
+    
+    System.out.println("fm1 is " + fm1);
+    System.out.println("hashcode for fm1 is "+ fm1.hashCode());
+    System.out.println("fieldmice 1 and 2 are equal? " + fm1.equals(fm2));
+    System.out.println("fieldmice 2 and 3 are equal? " + fm2.equals(fm3));
+ 
+    System.out.println("fieldmice2 is named " + fm2.getmName());
+    System.out.println("fieldmice1 is named " + fm1.getmName());
+    System.out.println("bunnyfoo1 is named " + bf1.getbName());
+    System.out.println("bunnyfoo2 is named " + bf2.getbName());
+    
+    System.out.println("bf1 is " + bf1);  
+    System.out.println("bf1 and bf2 are equal? " + bf1.equals(bf2));
+   System.out.println("fm2 and fm3 are equal? " + fm2.equals(fm3));
+ 
+    System.out.println(bf1.getClass());
+   System.out.println(bf2.getClass());
+   System.out.println(fm1.getClass());
+   System.out.println(fm2.getClass());
+   System.out.println(fm3.getClass());
+    
+ 
+  }
+ 
+}
+
+
+
+
+
+
